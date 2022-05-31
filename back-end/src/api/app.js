@@ -6,4 +6,4 @@ app.get('/coffee', (_req, res) => res.status(418).end());
 
 module.exports = app;
 
-// Branch Base Para Reset
+// Branch Para Desenvolvimento, dar merge aqui antes da main.

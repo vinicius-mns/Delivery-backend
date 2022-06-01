@@ -4,28 +4,28 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     const SalesProducts = queryInterface.createTable("SalesProducts", {
       sale_id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
         references: {
-          model: "sales",
+          model: "Sales",
           key: "id",
         },
         primaryKey: true,
       },
       products_id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         onUpdate: "CASCADE",
         onDelete: "CASCADE",
         references: {
-          model: "products",
+          model: "Products",
           key: "id",
         },
         primaryKey: true,
       },
-      quantity: { type: Sequelize.NUMBER, allowNull: false },
+      quantity: { type: Sequelize.INTEGER, allowNull: false },
     });
     return SalesProducts;
   },

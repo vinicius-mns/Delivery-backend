@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
 import Products from './pages/Products';
@@ -11,6 +11,7 @@ function App() {
       <Route path="/login" element={ <Login /> } />
       <Route path="/register" element={ <Register /> } />
       <Route path="/customer/products" element={ <Products /> } />
+      <Route exact path="/" element={ <Navigate to="/login" /> } />
     </Routes>
   );
 }

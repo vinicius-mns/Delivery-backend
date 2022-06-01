@@ -26,14 +26,15 @@ const Login = () => {
       const { token, user } = await requestLogin(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
+      navigate('/customer/products');
     } catch (err) {
       console.log(err);
       return err;
     }
   };
 
-  const handleEmail = ({ target: {value} }) => setEmail(value);
-  const handlePass = ({ target: {value} }) => setPassword(value);
+  const handleEmail = ({ target: { value } }) => setEmail(value);
+  const handlePass = ({ target: { value } }) => setPassword(value);
 
   return (
     <div className="container">

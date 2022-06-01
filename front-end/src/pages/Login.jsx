@@ -36,7 +36,6 @@ const Login = () => {
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-
         <div className="item">
           <h2>Login</h2>
           <input
@@ -47,7 +46,6 @@ const Login = () => {
             }
           />
         </div>
-
         <div className="item">
           <h2>Senha</h2>
           <input
@@ -58,7 +56,6 @@ const Login = () => {
             }
           />
         </div>
-
         <div className="buttons">
           <button type="button" disabled={ validateLogin() } onClick={ (e) => login(e) }>
             Login
@@ -72,7 +69,6 @@ const Login = () => {
             Ainda não tenho conta
           </button>
         </div>
-
       </div>
     </div>
   );

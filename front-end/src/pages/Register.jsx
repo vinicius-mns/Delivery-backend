@@ -1,42 +1,14 @@
 import React from 'react';
 import logo from '../images/logo.png';
+import Item from '../component/Item';
 
 const Register = () => (
   <div className="container">
-    <img src={ logo } alt="logo" className="logo2" />
+    <img src={ logo } alt="logo" className="logo" />
     <div className="box">
-      <div className="item">
-        <h2>Nome</h2>
-        <input
-          type="text"
-          data-testid="1"
-          onChange={
-            ({ target: { value } }) => setEmail(value)
-          }
-        />
-      </div>
-
-      <div className="item">
-        <h2>Email</h2>
-        <input
-          type="text"
-          data-testid="1"
-          onChange={
-            ({ target: { value } }) => setEmail(value)
-          }
-        />
-      </div>
-
-      <div className="item">
-        <h2>Senha</h2>
-        <input
-          type="text"
-          data-testid="1"
-          onChange={
-            ({ target: { value } }) => setEmail(value)
-          }
-        />
-      </div>
+      <Item title="Nome" testId={ 1 } type="text" />
+      <Item title="Email" testId={ 2 } type="text" />
+      <Item title="Senha" testId={ 3 } type="password" />
       <div className="buttons">
         <button type="button">
           Cadastrar

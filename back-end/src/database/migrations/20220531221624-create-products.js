@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    const Sales = queryInterface.createTable("Products", {
+    const Products = queryInterface.createTable("Products", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = {
         unique: true,
       },
       price: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.FLOAT,
         allowNull: false,
       },
       url_image: { 

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Item from '../component/Item';
+import logo from '../images/logo.png';
 import { requestLogin } from '../service/request';
 import '../styles/login.css';
-import Item from '../component/Item';
-
-import logo from '../images/logo.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,19 +39,18 @@ const Login = () => {
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-        <Item title="Login" testId={ 1 } type="text" handlechand={ handleEmail } />
-        <Item title="Senha" testId={ 2 } type="text" handlechand={ handlePass } />
+        <Item title="Login" testId="1" type="text" handleChange={ handleEmail } />
+        <Item title="Senha" testId="2" type="text" handleChange={ handlePass } />
 
         <div className="buttons">
-          <button type="button" disabled={ validateLogin() } onClick={ (e) => login(e) }>
+          <button
+            type="button"
+            disabled={ validateLogin() }
+            onClick={ (e) => login(e) }
+          >
             Login
           </button>
-          <button
-            type="submit"
-            onClick={
-              () => navigate('/register')
-            }
-          >
+          <button type="submit" onClick={ () => navigate('/register') }>
             Ainda não tenho conta
           </button>
         </div>

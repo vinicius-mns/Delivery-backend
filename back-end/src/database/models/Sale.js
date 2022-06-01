@@ -7,7 +7,7 @@ const createSales = (sequelize, DataTypes) => {
         total_price: DataTypes.NUMBER,
         delivery_address: DataTypes.STRING,
         delivery_number: DataTypes.STRING,
-        sale_date: DataTypes.DATETIME,
+        sale_date: DataTypes.DATE,
         status: DataTypes.STRING,
       },
       {
@@ -18,3 +18,4 @@ const createSales = (sequelize, DataTypes) => {
     return Sales;
   };
   
+module.exports = createSales;

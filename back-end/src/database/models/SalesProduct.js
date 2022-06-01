@@ -13,3 +13,5 @@ const createSalesProduct = (sequelize, DataTypes) => {
 
   return SalesProduct;
 };
+
+module.exports = createSalesProduct;

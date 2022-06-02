@@ -49,11 +49,21 @@ const Register = () => {
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-        <Item title="Nome" testId={ 6 } type="text" handleChange={ handleName } />
-        <Item title="Email" testId={ 7 } type="text" handleChange={ handleEmail } />
+        <Item
+          title="Nome"
+          testId="common_register__input-name"
+          type="text"
+          handleChange={ handleName }
+        />
+        <Item
+          title="Email"
+          testId="common_register__input-email"
+          type="text"
+          handleChange={ handleEmail }
+        />
         <Item
           title="Senha"
-          testId={ 8 }
+          testId="common_register__input-password"
           type="password"
           handleChange={ handlePass }
         />
@@ -62,7 +72,7 @@ const Register = () => {
             type="button"
             disabled={ validateRegister() }
             onClick={ (e) => register(e) }
-            data-testid={ 9 }
+            data-testid="common_register__button-register"
           >
             Cadastrar
           </button>

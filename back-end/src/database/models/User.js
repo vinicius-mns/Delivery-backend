@@ -1,6 +1,6 @@
 const createUser = (sequelize, DataTypes) => {
   const User = sequelize.define(
-    "User",
+    "Users",
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
@@ -9,6 +9,8 @@ const createUser = (sequelize, DataTypes) => {
     },
     {
       timestamps: false,
+      tableName: 'users',
+      underscored: true,
     }
   );
 

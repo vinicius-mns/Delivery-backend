@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [ invalid, setInvalid ] = useState(false)
+  const [invalid, setInvalid] = useState(false);
 
   const validateLogin = () => {
     const seis = 6;
@@ -31,7 +31,7 @@ const Login = () => {
       if (user.role === 'seller') navigate('/seller/orders');
       if (user.role === 'admin') navigate('/admin/manage');
     } catch (err) {
-      setInvalid(true)
+      setInvalid(true);
       console.log(err);
       return err;
     }
@@ -39,28 +39,40 @@ const Login = () => {
 
   const handleEmail = ({ target: { value } }) => setEmail(value);
   const handlePass = ({ target: { value } }) => setPassword(value);
+  const err = 'common_login__element-invalid-email';
 
   return (
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-        <Item title="Login" testId="1" type="text" handleChange={ handleEmail } />
-        <Item title="Senha" testId="2" type="password" handleChange={ handlePass } />
-        { invalid && <span>Email ou seja incorretos</span> }
+
+        <Item
+          title="Login"
+          testId="common_login__input-email"
+          type="text"
+          handleChange={ handleEmail }
+        />
+        <Item
+          title="Senha"
+          testId="common_login__input-password"
+          type="password"
+          handleChange={ handlePass }
+        />
+        { invalid && <span data-testid={ err }>Email ou senha incorretos</span> }
 
         <div className="buttons">
           <button
             type="button"
             disabled={ validateLogin() }
             onClick={ (e) => login(e) }
-            data-testid={ 3 }
+            data-testid="common_login__button-login"
           >
             Login
           </button>
           <button
             type="submit"
             onClick={ () => navigate('/register') }
-            data-testid={ 4 }
+            data-testid="common_login__button-register"
           >
             Ainda não tenho conta
           </button>

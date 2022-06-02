@@ -1,13 +1,15 @@
 const createSalesProduct = (sequelize, DataTypes) => {
   const SalesProduct = sequelize.define(
-    "SalesProduct",
+    "SalesProducts",
     {
-      sale_id: DataTypes.NUMBER,
-      prduct_id: DataTypes.NUMBER,
+      saleId: DataTypes.NUMBER,
+      prductId: DataTypes.NUMBER,
       quantity: DataTypes.NUMBER,
     },
     {
       timestamps: false,
+      tableName: 'sales_products',
+      underscored: true,
     }
   );
 

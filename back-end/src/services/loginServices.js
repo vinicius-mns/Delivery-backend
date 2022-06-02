@@ -1,10 +1,10 @@
 const { sign } = require('jsonwebtoken');
 const md5 = require('md5');
 const { readFile } = require('fs/promises');
-const { User } = require('../database/models');
+const { Users } = require('../database/models');
 
 const createLogin = async ({ email, password }) => {
-  const user = await User.findOne({ where: { email } });
+  const user = await Users.findOne({ where: { email } });
 
   if (!user) return false;
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '../images/logo.png';
 import Item from '../component/Item';
+import logo from '../images/logo.png';
 import { requestPost } from '../service/request';
 
 const Register = () => {
@@ -9,6 +9,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [invalid, setInvalid] = useState(false);
 
   const validateRegister = () => {
     const passwordLength = 6;
@@ -36,6 +37,7 @@ const Register = () => {
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
       navigate('/customer/products');
     } catch (err) {
+      setInvalid(true);
       console.log(err);
       return err;
     }
@@ -44,6 +46,7 @@ const Register = () => {
   const handleEmail = ({ target: { value } }) => setEmail(value);
   const handlePass = ({ target: { value } }) => setPassword(value);
   const handleName = ({ target: { value } }) => setName(value);
+  const err = 'common_register__element-invalid_register';
 
   return (
     <div className="container">
@@ -67,6 +70,8 @@ const Register = () => {
           type="password"
           handleChange={ handlePass }
         />
+        { invalid && <span data-testid={ err }>Email ou senha incorretos</span> }
+
         <div className="buttons">
           <button
             type="button"

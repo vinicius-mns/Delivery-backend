@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [ invalid, setInvalid ] = useState(false)
 
   const validateLogin = () => {
     const seis = 6;
@@ -30,6 +31,7 @@ const Login = () => {
       if (user.role === 'seller') navigate('/seller/orders');
       if (user.role === 'admin') navigate('/admin/manage');
     } catch (err) {
+      setInvalid(true)
       console.log(err);
       return err;
     }
@@ -43,12 +45,8 @@ const Login = () => {
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
         <Item title="Login" testId="1" type="text" handleChange={ handleEmail } />
-        <Item
-          title="Senha"
-          testId="2"
-          type="password"
-          handleChange={ handlePass }
-        />
+        <Item title="Senha" testId="2" type="password" handleChange={ handlePass } />
+        { invalid && <span>Email ou seja incorretos</span> }
 
         <div className="buttons">
           <button

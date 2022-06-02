@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Item from '../component/Item';
 import logo from '../images/logo.png';
-import { requestLogin } from '../service/request';
+import { requestPost } from '../service/request';
 import '../styles/login.css';
 
 const Login = () => {
@@ -23,10 +23,10 @@ const Login = () => {
     event.preventDefault();
     try {
       const endpoint = '/login';
-      const { token, user } = await requestLogin(endpoint, { email, password });
+      const { token, user } = await requestPost(endpoint, { email, password });
 
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
-      navigate('/customer/products');
+      if (user.role === 'customer') navigate('/customer/products');
     } catch (err) {
       console.log(err);
       return err;
@@ -41,17 +41,27 @@ const Login = () => {
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
         <Item title="Login" testId="1" type="text" handleChange={ handleEmail } />
-        <Item title="Senha" testId="2" type="password" handleChange={ handlePass } />
+        <Item
+          title="Senha"
+          testId="2"
+          type="password"
+          handleChange={ handlePass }
+        />
 
         <div className="buttons">
           <button
             type="button"
             disabled={ validateLogin() }
             onClick={ (e) => login(e) }
+            data-testid={ 3 }
           >
             Login
           </button>
-          <button type="submit" onClick={ () => navigate('/register') }>
+          <button
+            type="submit"
+            onClick={ () => navigate('/register') }
+            data-testid={ 4 }
+          >
             Ainda não tenho conta
           </button>
         </div>

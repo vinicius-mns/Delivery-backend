@@ -27,6 +27,8 @@ const Login = () => {
 
       localStorage.setItem('user', JSON.stringify({ token, ...user }));
       if (user.role === 'customer') navigate('/customer/products');
+      if (user.role === 'seller') navigate('/seller/orders');
+      if (user.role === 'admin') navigate('/admin/manage');
     } catch (err) {
       console.log(err);
       return err;

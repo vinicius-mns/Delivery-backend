@@ -6,7 +6,7 @@ const createLogin = async (req, res, next) => {
 
     const data = await LoginServices.createLogin({ email, password });
 
-    if (!data) return res.status(400).json({ message: 'Invalid fields' });
+    if (!data) return res.status(404).json({ message: 'Invalid fields' });
 
     return res.status(200).json(data);
   } catch (error) {

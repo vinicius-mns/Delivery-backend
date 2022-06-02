@@ -42,10 +42,15 @@ const Login = () => {
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-        <Item title="Login" testId="1" type="text" handleChange={ handleEmail } />
+        <Item
+          title="Login"
+          testId="common_login__input-email"
+          type="text"
+          handleChange={ handleEmail }
+        />
         <Item
           title="Senha"
-          testId="2"
+          testId="common_login__input-password"
           type="password"
           handleChange={ handlePass }
         />
@@ -55,14 +60,14 @@ const Login = () => {
             type="button"
             disabled={ validateLogin() }
             onClick={ (e) => login(e) }
-            data-testid={ 3 }
+            data-testid="common_login__button-login"
           >
             Login
           </button>
           <button
             type="submit"
             onClick={ () => navigate('/register') }
-            data-testid={ 4 }
+            data-testid="common_login__button-register"
           >
             Ainda não tenho conta
           </button>

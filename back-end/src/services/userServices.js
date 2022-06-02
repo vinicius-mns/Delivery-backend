@@ -1,17 +1,17 @@
 const { sign } = require('jsonwebtoken');
 const { readFile } = require('fs/promises');
 const md5 = require('md5');
-const { User } = require('../database/models');
+const { Users } = require('../database/models');
 
 const createUser = async (user) => {
     const { name, email, password } = user;
     const md5pass = md5(password);
-    const findUser = await User.findOne({ where: { email } });
+    const findUser = await Users.findOne({ where: { email } });
 
     if (findUser) return false;
 
     const role = 'customer';
-    const newUser = await User.create({ name, email, password: md5pass, role });
+    const newUser = await Users.create({ name, email, password: md5pass, role });
     
     const SECRET = await readFile('jwt.evaluation.key', 'utf-8');
 

@@ -4,7 +4,13 @@
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 900px;
+  width: 500px;
+  z-index: -4;
+}
+
+.showLogo {
+  height: 68vh;
+  width: 40px;
 }
 
 .bar {
@@ -48,7 +54,6 @@ h2 {
   justify-content: center;
   margin-left: 2.5%;
   margin-top: 67px;
-  position: absolute;
   width: 95%;
 }
 

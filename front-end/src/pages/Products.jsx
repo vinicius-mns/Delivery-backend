@@ -91,6 +91,7 @@ const Products = () => (
       <Card />
       <Card />
     </div>
+    <div className="showLogo" />
   </div>
 );
 

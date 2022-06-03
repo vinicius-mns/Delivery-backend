@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '../component/card';
 import '../styles/bar.css';
 import logo from '../images/logo.png';
@@ -6,6 +7,9 @@ import { requestGet } from '../service/request';
 
 const Products = () => {
   const [productList, setProductList] = useState([]);
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProduts = async () => {
@@ -16,6 +20,11 @@ const Products = () => {
     getProduts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const logout = () => {
+    localStorage.clear('user');
+    navigate('/login');
+  };
 
   return (
     <div className="products">

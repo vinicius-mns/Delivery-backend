@@ -1,3 +1,12 @@
+.backgroundImage {
+  width: 900px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 50%;
+}
+
 .bar {
   background-color: white;
   display: flex;

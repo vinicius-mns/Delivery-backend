@@ -46,7 +46,6 @@ const Login = () => {
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-
         <Item
           title="Login"
           testId="common_login__input-email"

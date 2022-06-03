@@ -37,8 +37,7 @@ const Products = () => {
       </div>
       <div className="container2">
         {
-          productList.map(({ urlImage, id, name, price }) => (
-            <Card name={ name } key={ id } price={ price } img={ urlImage } />
+          productList.length > 0 && productList.map(({ urlImage, id, name, price }) => (
           ))
         }
       </div>

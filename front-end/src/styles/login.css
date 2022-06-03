@@ -112,7 +112,7 @@ button:disabled {
   }
 }
 
-span {
+.err {
   color: red;
   font-size: 12px;
 }

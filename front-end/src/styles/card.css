@@ -10,6 +10,7 @@
 }
 
 .card img {
+  max-height: 140px;
   max-width: 140px;
 }
 
@@ -25,7 +26,6 @@
 .number {
   border: none;
   height: 26px;
-  pointer-events: none;
   text-align: center;
   width: 25px;
 }

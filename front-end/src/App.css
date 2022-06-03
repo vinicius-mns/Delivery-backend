@@ -4,3 +4,20 @@ body {
   margin-top: 0;
   padding: 0;
 }
+
+button {
+  background-color: white;
+}
+
+button:hover {
+  color: #94b498;
+}
+
+footer {
+  color: rgb(102, 102, 102);
+  position: fixed;
+  background-color: rgb(233, 233, 233);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0;
+}

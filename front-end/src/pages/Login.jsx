@@ -40,12 +40,12 @@ const Login = () => {
   const handleEmail = ({ target: { value } }) => setEmail(value);
   const handlePass = ({ target: { value } }) => setPassword(value);
   const err = 'common_login__element-invalid-email';
+  const msg = 'Email ou senha incorretos';
 
   return (
     <div className="container">
       <img src={ logo } alt="logo" className="logo" />
       <div className="box">
-
         <Item
           title="Login"
           testId="common_login__input-email"
@@ -58,7 +58,7 @@ const Login = () => {
           type="password"
           handleChange={ handlePass }
         />
-        { invalid && <span data-testid={ err }>Email ou senha incorretos</span> }
+        { invalid && <span className="err" data-testid={ err }>{ msg }</span> }
 
         <div className="buttons">
           <button

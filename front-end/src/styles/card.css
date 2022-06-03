@@ -1,0 +1,46 @@
+.card {
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+}
+
+.card img {
+  max-width: 140px;
+}
+
+.descricao {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 50px;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.number {
+  border: none;
+  height: 26px;
+  pointer-events: none;
+  text-align: center;
+  width: 25px;
+}
+
+.quantidade {
+  align-items: center;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  padding: 5px;
+}
+
+.quantidade button {
+  border: none;
+  font-size: 20px;
+  height: 100%;
+  width: 20px;
+}

@@ -1,21 +1,20 @@
 .backgroundImage {
-  width: 900px;
-  position: fixed;
   left: 50%;
+  opacity: 50%;
+  position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
-  opacity: 50%;
+  width: 900px;
 }
 
 .bar {
+  align-items: center;
   background-color: white;
-  display: flex;
-  width: 40%;
-
   border-radius: 16px;
+  display: flex;
   height: 45px;
   justify-content: space-evenly;
-  align-items: center;
+  width: 40%;
 }
 
 .bar button {
@@ -24,20 +23,19 @@
 }
 
 .sair {
-  height: 45px;
-  color: red;
-  border: none;
   background-color: white;
+  border: none;
   border-radius: 16px;
+  color: red;
+  height: 45px;
   left: 75%;
   width: 140px;
 }
 
 .name {
-  display: flex;
-
-  border: none;
   background-color: transparent;
+  border: none;
+  display: flex;
 }
 
 h2 {
@@ -45,35 +43,32 @@ h2 {
 }
 
 .container2 {
-  width: 95%;
-  margin-left: 2.5%;
-  margin-top: 67px;
-  position: absolute;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: 2.5%;
+  margin-top: 67px;
+  position: absolute;
+  width: 95%;
 }
 
 .segredo {
-  z-index: 50;
-  width: 100%;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  display: flex;
   height: 65px;
+  justify-content: space-evenly;
   position: fixed;
   top: 0;
-  background-color: rgb(233, 233, 233);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  width: 100%;
+  z-index: 50;
 }
-
 
 .carrinho {
   background-color: #94b498;
+  border-radius: 12px;
   color: black;
   height: 40px;
-  border-radius: 12px;
 }
 
 .carrinho:hover {

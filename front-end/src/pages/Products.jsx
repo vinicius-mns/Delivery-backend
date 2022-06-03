@@ -3,8 +3,6 @@ import Card from '../component/card';
 import '../styles/bar.css';
 import logo from '../images/logo.png';
 
-const sair = 'https://cdn-icons-png.flaticon.com/512/63/63769.png';
-
 const Products = () => (
   <div className="products">
     <img src={ logo } alt="logo" className="backgroundImage" />

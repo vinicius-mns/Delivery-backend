@@ -11,6 +11,10 @@ const Card = ({ img, name, price, id }) => {
 
   const decrement = () => { if (value !== 0) { setValue(value - 1); } };
 
+  const handleQuantityValue = ({ target }) => {
+    if (Number(target.value) < 0 || Number.isNaN(target.value)) setValue(0);
+    setValue(Number(target.value));
+  };
   return (
     <div className="card" key={ id }>
       <img src={ img } alt="lata" />

@@ -9,14 +9,18 @@ import AdminManager from './pages/AdminManager';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/login" element={ <Login /> } />
-      <Route path="/register" element={ <Register /> } />
-      <Route path="/customer/products" element={ <Products /> } />
-      <Route path="/seller/orders" element={ <SellerOrders /> } />
-      <Route path="/admin/manage" element={ <AdminManager /> } />
-      <Route exact path="/" element={ <Navigate to="/login" /> } />
-    </Routes>
+    <div>
+
+      <Routes>
+        <Route path="/login" element={ <Login /> } />
+        <Route path="/register" element={ <Register /> } />
+        <Route path="/customer/products" element={ <Products /> } />
+        <Route path="/seller/orders" element={ <SellerOrders /> } />
+        <Route path="/admin/manage" element={ <AdminManager /> } />
+        <Route exact path="/" element={ <Navigate to="/login" /> } />
+      </Routes>
+      <footer>© Ostron company Todos direitos reservados</footer>
+    </div>
   );
 }
 

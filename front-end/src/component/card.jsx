@@ -11,21 +11,55 @@ const Card = ({ img, name, price, id }) => {
 
   const decrement = () => { if (value !== 0) { setValue(value - 1); } };
 
+  const prefixTag = 'customer_products__';
+
+  const sufixTag = id;
+
   const handleQuantityValue = ({ target }) => {
     if (Number(target.value) < 0 || Number.isNaN(target.value)) setValue(0);
     setValue(Number(target.value));
   };
+
   return (
-    <div className="card" key={ id }>
-      <img src={ img } alt="lata" />
+    <div className="card">
+      <img
+        src={ img }
+        alt="lata"
+        data-testid={ `${prefixTag}img-card-bg-image-${sufixTag}` }
+      />
       <div className="descricao">
-        <span>{ name }</span>
-        <span>{`R$: ${price}`}</span>
+        <span
+          data-testid={ `${prefixTag}element-card-title-${sufixTag}` }
+        >
+          { name }
+        </span>
+        <span data-testid={ `${prefixTag}element-card-price-${sufixTag}` }>
+          {`${price.toString().replace('.', ',')}`}
+        </span>
       </div>
       <div className="quantidade">
-        <button type="button" onClick={ decrement }>-</button>
-        <input className="number" type="string" value={ value } />
-        <button type="button" onClick={ increment }>+</button>
+        <button
+          type="button"
+          onClick={ decrement }
+          data-testid={ `${prefixTag}button-card-rm-item-${sufixTag}` }
+        >
+          -
+        </button>
+        <input
+          className="number"
+          type="string"
+          value={ value }
+          onChange={ handleQuantityValue }
+          min={ 0 }
+          data-testid={ `${prefixTag}input-card-quantity-${sufixTag}` }
+        />
+        <button
+          type="button"
+          onClick={ increment }
+          data-testid={ `${prefixTag}button-card-add-item-${sufixTag}` }
+        >
+          +
+        </button>
       </div>
     </div>
   );

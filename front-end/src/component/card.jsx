@@ -2,22 +2,17 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import '../styles/card.css';
 
-// const img = 'https://www.imagensempng.com.br/wp-content/uploads/2022/01/2442.png';
-
 const Card = ({ img, name, price, id }) => {
-  const [value, setValue] = useState(0);
-
-  const increment = () => setValue(value + 1);
-
-  const decrement = () => { if (value !== 0) { setValue(value - 1); } };
-
+  const [quantity, setValue] = useState(0);
   const prefixTag = 'customer_products__';
 
-  const sufixTag = id;
+  const increment = () => setValue(quantity + 1);
+  const decrement = () => { if (quantity !== 0) { setValue(quantity - 1); } };
 
-  const handleQuantityValue = ({ target }) => {
-    if (Number(target.value) < 0 || Number.isNaN(target.value)) setValue(0);
-    setValue(Number(target.value));
+  const handleValue = ({ target: { value } }) => {
+    const max = 99;
+    if (!Number.isNaN(Number(value))) setValue(Number(value));
+    if (Number(value) >= max) setValue(max);
   };
 
   return (
@@ -25,38 +20,41 @@ const Card = ({ img, name, price, id }) => {
       <img
         src={ img }
         alt="lata"
-        data-testid={ `${prefixTag}img-card-bg-image-${sufixTag}` }
+        data-testid={ `${prefixTag}img-card-bg-image-${id}` }
       />
       <div className="descricao">
         <span
-          data-testid={ `${prefixTag}element-card-title-${sufixTag}` }
+          data-testid={ `${prefixTag}element-card-title-${id}` }
         >
           { name }
         </span>
-        <span data-testid={ `${prefixTag}element-card-price-${sufixTag}` }>
-          {`${price.toString().replace('.', ',')}`}
-        </span>
+        <div className="price">
+          <span>{'R$: '}</span>
+          <span data-testid={ `${prefixTag}element-card-price-${id}` }>
+            {`${price.toString().replace('.', ',')}`}
+          </span>
+        </div>
       </div>
       <div className="quantidade">
         <button
           type="button"
           onClick={ decrement }
-          data-testid={ `${prefixTag}button-card-rm-item-${sufixTag}` }
+          data-testid={ `${prefixTag}button-card-rm-item-${id}` }
         >
           -
         </button>
         <input
           className="number"
           type="string"
-          value={ value }
-          onChange={ handleQuantityValue }
+          value={ quantity }
+          onChange={ handleValue }
           min={ 0 }
-          data-testid={ `${prefixTag}input-card-quantity-${sufixTag}` }
+          data-testid={ `${prefixTag}input-card-quantity-${id}` }
         />
         <button
           type="button"
           onClick={ increment }
-          data-testid={ `${prefixTag}button-card-add-item-${sufixTag}` }
+          data-testid={ `${prefixTag}button-card-add-item-${id}` }
         >
           +
         </button>

@@ -17,7 +17,7 @@ footer {
   color: rgb(102, 102, 102);
   position: fixed;
   background-color: rgb(233, 233, 233);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  bottom: 0;
+  bottom: 3px;
+  text-align: center;
+  width: 100%;
 }

@@ -1,0 +1,81 @@
+.backgroundImage {
+  left: 50%;
+  opacity: 30%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  z-index: -4;
+}
+
+.showLogo {
+  height: 68vh;
+  width: 40px;
+}
+
+.bar {
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  height: 45px;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.bar button {
+  border-style: none;
+  height: 38px;
+}
+
+.sair {
+  background-color: white;
+  border: none;
+  border-radius: 16px;
+  color: red;
+  height: 45px;
+  left: 75%;
+  width: 140px;
+}
+
+.name {
+  background-color: transparent;
+  border: none;
+  display: flex;
+}
+
+h2 {
+  font-weight: 100;
+}
+
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 2.5%;
+  margin-top: 67px;
+  width: 95%;
+}
+
+.segredo {
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  height: 65px;
+  justify-content: space-evenly;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+.carrinho {
+  background-color: #94b498;
+  border-radius: 12px;
+  color: black;
+  height: 40px;
+}
+
+.carrinho:hover {
+  color: white;
+}

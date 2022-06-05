@@ -5,20 +5,13 @@ import logo from '../images/logo.png';
 import { requestPost } from '../service/request';
 import '../styles/login.css';
 
+import * as func from '../functions/login';
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalid, setInvalid] = useState(false);
-
-  const validateLogin = () => {
-    const seis = 6;
-    const P = password.length >= seis;
-    const regex = /\S+@\S+\.\S+/;
-    const E = regex.test(email);
-
-    return !(P && E);
-  };
 
   const login = async (event) => {
     event.preventDefault();
@@ -63,7 +56,7 @@ const Login = () => {
         <div className="buttons">
           <button
             type="button"
-            disabled={ validateLogin() }
+            disabled={ func.validateLogin(email, password) }
             onClick={ (e) => login(e) }
             data-testid="common_login__button-login"
           >

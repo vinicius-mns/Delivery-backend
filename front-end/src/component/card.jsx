@@ -1,18 +1,44 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import CustomerContext from '../context/CustomerContext';
 import '../styles/card.css';
 
 const Card = ({ img, name, price, id }) => {
-  const [quantity, setValue] = useState(0);
+  const { cart, setCart } = useContext(CustomerContext);
+  const [quantity, setQuantity] = useState(0);
   const prefixTag = 'customer_products__';
 
-  const increment = () => setValue(quantity + 1);
-  const decrement = () => { if (quantity !== 0) { setValue(quantity - 1); } };
+  const increment = () => {
+    setQuantity(quantity + 1);
 
-  const handleValue = ({ target: { value } }) => {
+    const editedCart = cart.filter((item) => item.name !== name);
+    editedCart.push({ id, name, price, quantity: quantity + 1 });
+    setCart(editedCart);
+  };
+  const decrement = () => { if (quantity !== 0) { 
+    setQuantity(quantity - 1); 
+    
+    const editedCart = cart.filter((item) => item.name !== name);
+      editedCart.push({ id, name, price, quantity: quantity - 1 });
+      setCart(editedCart);
+  } };
+
+  const handleQuantity = ({ target: { value } }) => {
     const max = 99;
-    if (!Number.isNaN(Number(value))) setValue(Number(value));
-    if (Number(value) >= max) setValue(max);
+    if (!Number.isNaN(Number(value))) {
+      setQuantity(Number(value));
+      const editedCart = cart.filter((item) => item.name !== name);
+      editedCart.push({ id, name, price, quantity: value });
+      setCart(editedCart);
+    }
+
+    if (Number(value) >= max) {
+      setQuantity(max);
+      
+      const editedCart = cart.filter((item) => item.name !== name);
+      editedCart.push({ id, name, price, quantity: value });
+      setCart(editedCart);
+    }
   };
 
   return (
@@ -47,7 +73,7 @@ const Card = ({ img, name, price, id }) => {
           className="number"
           type="string"
           value={ quantity }
-          onChange={ handleValue }
+          onChange={ handleQuantity }
           min={ 0 }
           data-testid={ `${prefixTag}input-card-quantity-${id}` }
         />

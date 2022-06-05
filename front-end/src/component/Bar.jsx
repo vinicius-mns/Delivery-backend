@@ -1,8 +1,10 @@
-import '../styles/bar.css';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import CustomerContext from '../context/CustomerContext';
+import '../styles/bar.css';
 
 const Bar = () => {
+  const { totalPrice } = useContext(CustomerContext);
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 
@@ -36,7 +38,7 @@ const Bar = () => {
           type="button"
           className="carrinho"
         >
-          Ver Carrinho: R$: 34:99
+          {`Ver Carrinho: R$: ${totalPrice}`}
         </button>
       </div>
       <button

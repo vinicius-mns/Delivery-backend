@@ -4,12 +4,12 @@ import CustomerContext from '../context/CustomerContext';
 
 function CustomerProvider({ children }) {
   const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState("0,00");
+  const [totalPrice, setTotalPrice] = useState('0,00');
 
   const context = {
     cart,
     setCart,
-    totalPrice, 
+    totalPrice,
     setTotalPrice,
   };
 

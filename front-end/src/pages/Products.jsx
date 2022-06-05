@@ -8,7 +8,6 @@ import '../styles/bar.css';
 
 const Products = () => {
   const { cart, setTotalPrice } = useContext(CustomerContext);
-  
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
@@ -23,19 +22,19 @@ const Products = () => {
   useEffect(() => {
     const result = cart.reduce(
       (acc, curr) => acc + curr.price * curr.quantity,
-      0
+      0,
     );
     setTotalPrice(result.toFixed(2));
-  },[cart]);
+  }, [cart]);
 
   return (
     <div className="products">
-      <img src={logo} alt="logo" className="backgroundImage" />
+      <img src={ logo } alt="logo" className="backgroundImage" />
       <Bar />
       <div className="container2">
-        {productList.length > 0 &&
-          productList.map(({ urlImage, id, name, price }) => (
-            <Card id={id} name={name} key={id} price={price} img={urlImage} />
+        {productList.length > 0 
+          && productList.map(({ urlImage, id, name, price }) => (
+            <Card id={ id } name={ name } key={ id } price={ price } img={ urlImage } />
           ))}
       </div>
       <div className="showLogo" />

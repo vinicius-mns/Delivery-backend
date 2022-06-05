@@ -70,12 +70,26 @@ h2 {
 }
 
 .carrinho {
-  background-color: #94b498;
   border-radius: 12px;
   color: black;
   height: 40px;
 }
 
-.carrinho:hover {
-  color: white;
+.carrinho:after {
+  content: '';
+  display: block;
+  margin-left: 60%;
+  width: 40%;
+  height: 2px;
+  background-color: #c1dfc5;
+}
+
+.selected:after {
+  background-color: black;
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 0 auto;
+  margin-top: 2px;
+  width: 90%;
 }

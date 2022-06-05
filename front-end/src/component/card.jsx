@@ -15,13 +15,13 @@ const Card = ({ img, name, price, id }) => {
     editedCart.push({ id, name, price, quantity: quantity + 1 });
     setCart(editedCart);
   };
-  const decrement = () => { if (quantity !== 0) 
-    {
-      setQuantity(quantity - 1);   
+  const decrement = () => {
+    if (quantity !== 0) {
+      setQuantity(quantity - 1);
       const editedCart = cart.filter((item) => item.name !== name);
-        editedCart.push({ id, name, price, quantity: quantity - 1 });
-        setCart(editedCart);
-    } 
+      editedCart.push({ id, name, price, quantity: quantity - 1 });
+      setCart(editedCart);
+    }
   };
 
   const handleQuantity = ({ target: { value } }) => {
@@ -34,7 +34,7 @@ const Card = ({ img, name, price, id }) => {
     }
 
     if (Number(value) >= max) {
-      setQuantity(max); 
+      setQuantity(max);
       const editedCart = cart.filter((item) => item.name !== name);
       editedCart.push({ id, name, price, quantity: value });
       setCart(editedCart);

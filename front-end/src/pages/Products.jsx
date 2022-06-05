@@ -32,7 +32,7 @@ const Products = () => {
       <img src={ logo } alt="logo" className="backgroundImage" />
       <Bar />
       <div className="container2">
-        {productList.length > 0 
+        {productList.length > 0
           && productList.map(({ urlImage, id, name, price }) => (
             <Card id={ id } name={ name } key={ id } price={ price } img={ urlImage } />
           ))}

@@ -25,7 +25,7 @@ const Products = () => {
       0,
     );
     setTotalPrice(result.toFixed(2));
-  }, [cart]);
+  }, [cart, setTotalPrice]);
 
   return (
     <div className="products">

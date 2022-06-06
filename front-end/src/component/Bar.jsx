@@ -1,23 +1,27 @@
 import '../styles/bar.css';
-import React, { useState } from 'react';
+import '../styles/cart.css';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cart from '../pages/Cart';
-import '../styles/cart.css';
 import Order from '../pages/Order';
+import CustomerContext from '../context/CustomerContext';
+import * as path from '../utils/paths';
 
 const Bar = () => {
   const [cart, setCart] = useState(false);
   const [order, setOrnder] = useState(false);
+  const { totalPrice } = useContext(CustomerContext);
 
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear('user');
-    navigate('/login');
+    navigate(path.login);
   };
 
   const toCart = () => setCart(true);
+
   const toOrder = () => setOrnder(true);
 
   const close = () => {
@@ -52,7 +56,7 @@ const Bar = () => {
           className={ `${cart} carrinho` }
           onClick={ toCart }
         >
-          Ver Carrinho: R$: 34:99
+          {`Ver Carrinho: R$: ${totalPrice}`}
         </button>
       </div>
       <button

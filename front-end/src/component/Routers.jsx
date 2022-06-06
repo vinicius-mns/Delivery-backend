@@ -12,7 +12,7 @@ import AdminManager from '../pages/AdminManager';
 const Routers = () => (
   <Routes>
     <Route path={ path.login } element={ <Login /> } />
-    <Route path={ path.registe } element={ <Register /> } />
+    <Route path={ path.register } element={ <Register /> } />
     <Route path={ path.product } element={ <Products /> } />
     <Route path={ path.order } element={ <SellerOrders /> } />
     <Route path={ path.admin } element={ <AdminManager /> } />

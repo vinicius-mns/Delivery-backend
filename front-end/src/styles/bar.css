@@ -64,6 +64,7 @@ h2 {
   display: flex;
   height: 65px;
   justify-content: space-evenly;
+  
   /* position: fixed; */
   top: 0;
   width: 100%;

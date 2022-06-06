@@ -1,14 +1,40 @@
 import '../styles/bar.css';
-import React from 'react';
+import '../styles/cart.css';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cart from '../pages/Cart';
+import Order from '../pages/Order';
+import CustomerContext from '../context/CustomerContext';
+import * as path from '../utils/paths';
 
 const Bar = () => {
+  const [order, setOrnder] = useState(false);
+  const { totalPrice, modalCart, setModalCart } = useContext(CustomerContext);
+
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
 
   const logout = () => {
     localStorage.clear('user');
-    navigate('/login');
+    navigate(path.login);
+  };
+
+  const toCart = () => {
+    setModalCart(true);
+    navigate(path.checkout);
+  };
+
+  const toProducts = () => {
+    setModalCart(false);
+    navigate(path.product);
+  };
+
+  const toOrder = () => setOrnder(true);
+
+  const close = () => {
+    setModalCart(false);
+    setOrnder(false);
+    navigate(path.product);
   };
 
   return (
@@ -22,21 +48,30 @@ const Bar = () => {
         <button
           data-testid="customer_products__element-navbar-link-products"
           type="button"
+          onClick={ toProducts }
         >
           Produtos
         </button>
         <button
           data-testid="customer_products__element-navbar-link-orders"
           type="button"
+          onClick={ toOrder }
         >
           Meus pedidos
         </button>
         <button
-          data-testid="customer_products__checkout-bottom-value"
+          data-testid="customer_products__button-cart"
           type="button"
-          className="carrinho"
+          className={ `${modalCart} carrinho` }
+          onClick={ toCart }
+          disabled={ totalPrice === '0.00' }
         >
-          Ver Carrinho: R$: 34:99
+          <span>Ver Carrinho: R$:</span>
+          <span data-testid="customer_products__checkout-bottom-value">
+            {
+              totalPrice.toString().replace('.', ',')
+            }
+          </span>
         </button>
       </div>
       <button
@@ -47,6 +82,12 @@ const Bar = () => {
       >
         Sair
       </button>
+      {modalCart && <Cart />}
+      {order && <Order />}
+      {
+        (modalCart || order)
+          && <button onClick={ close } className="blur" type="button"> </button>
+      }
     </div>
   );
 };

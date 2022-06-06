@@ -1,0 +1,180 @@
+.cart {
+  align-items: center;
+  animation: sliceL;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  height: 84vh;
+  opacity: 60%;
+  position: fixed;
+  right: -5%;
+  top: 63px;
+  width: 50%;
+  z-index: 100;
+}
+
+.cart h2 {
+  margin: 10px;
+}
+
+.nothing {
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 299;
+}
+
+.blur {
+  animation: suaveBlur;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  background-color: transparent;
+  border: none;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.containerSubCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.schroll {
+  height: 270px;
+  overflow-y: scroll;
+}
+
+.subCard {
+  align-items: center;
+  display: flex;
+  height: 38px;
+  margin: 5px;
+  width: 95%;
+}
+
+.grey {
+  background-color: rgb(241, 241, 241);
+}
+
+.rdard .a {
+  flex-grow: 0.1;
+  width: 50px;
+}
+
+.subCard .b {
+  flex-grow: 6;
+}
+
+.subCard .c {
+  flex-grow: 0.5;
+}
+
+.subCard .d {
+  flex-grow: 0.5;
+}
+
+.subCard .e {
+  flex-grow: 0.5;
+}
+
+.subCard .f {
+  flex-grow: 0.5;
+}
+
+
+.subCard span {
+  align-items: center;
+  display: flex;
+  height: 38px;
+  justify-content: center;
+  text-align: center;
+  width: 100px;
+}
+
+.subCard button {
+  background-color: rgb(255, 202, 202);
+  border: none;
+  height: 38px;
+  text-align: center;
+  width: 100px;
+}
+
+.finishContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.finishContainer div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+}
+
+.finishContainer input {
+  background-color: rgb(241, 241, 241);
+  border: none;
+  border-bottom: solid black 1px;
+  height: 36px;
+  margin-top: 5px;
+  outline: none;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.finshB {
+  bottom: 10px;
+  display: flex;
+  height: 50px;
+  justify-content: space-evenly;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.finshB button {
+  background-color: #c1dfc5;
+  border: none;
+  width: 40%;
+}
+
+.details {
+  font-size: 18px;
+  margin: 20px;
+}
+
+.totalPrice {
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+@keyframes suaveBlur {
+
+  to {
+    backdrop-filter: blur(2px);
+  }
+}
+
+@keyframes sliceL {
+
+  to {
+    opacity: 100%;
+    right: 1%;
+  }
+}

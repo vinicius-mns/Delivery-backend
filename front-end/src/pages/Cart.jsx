@@ -1,13 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import SubCard from '../component/SubCard';
 import CustomerContext from '../context/CustomerContext';
 
 const Cart = () => {
+  const [nothing, setNothing] = useState(true);
   const { totalPrice, cart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
 
+  useEffect(() => {
+    if (items.length > 0) setNothing(false);
+  }, [items.length]);
+
   return (
     <div className="cart">
+      {nothing && <div className="nothing"><h1>Carrinho Vazio</h1></div>}
       <h2>Finalizar pedido</h2>
       <div className="containerSubCard">
         <div className="subCard">

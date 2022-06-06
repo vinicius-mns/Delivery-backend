@@ -1,55 +1,53 @@
 .order {
-  z-index: 100;
-  background-color: white;
-  box-shadow: 0 0 50px rgb(221, 221, 221);
-  border-radius: 16px;
-  height: 84vh;
-  left: -5%;
-  position: fixed;
-  top: 63px;
-  opacity: 60%;
-  
-  width: 50%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-
   animation: sliceR;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  height: 84vh;
+  left: -5%;
+  opacity: 60%;
+  position: fixed;
+  top: 63px;
+  width: 50%;
+  z-index: 100;
 }
 
 .orderContainer {
-  overflow-y: scroll;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 95%;
   height: 72vh;
+  overflow-y: scroll;
+  width: 95%;
 }
 
 .cardOrder {
-  border-radius: 16px;
-  margin-top: 10px;
-  justify-content: space-evenly;
   align-items: center;
-  width: 90%;
+  border-radius: 16px;
   display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 90%;
 }
 
 .cardOrder div {
   align-items: center;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .status {
-  display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 16px;
+  display: flex;
   height: 80%;
+  justify-content: center;
 }
 
 .Pendente {

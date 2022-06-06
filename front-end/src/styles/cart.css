@@ -1,43 +1,40 @@
 .cart {
-  z-index: 100;
-  background-color: white;
-  box-shadow: 0 0 50px rgb(221, 221, 221);
-  border-radius: 16px;
-  height: 84vh;
-  right: -5%;
-  position: fixed;
-  top: 63px;
-  opacity: 60%;
-  
-  width: 50%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-
   animation: sliceL;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 0 50px rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  height: 84vh;
+  opacity: 60%;
+  position: fixed;
+  right: -5%;
+  top: 63px;
+  width: 50%;
+  z-index: 100;
 }
 
 .blur {
-  z-index: 1;
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  background-color: transparent;
-  border: none;
-  
   animation: suaveBlur;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  background-color: transparent;
+  border: none;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
 }
 
 .containerSubCard {
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
 }
 
 .schroll {
@@ -46,13 +43,11 @@
 }
 
 .subCard {
-  width: 95%;
   align-items: center;
   display: flex;
-
   height: 38px;
-
   margin: 5px;
+  width: 95%;
 }
 
 .grey {
@@ -86,20 +81,20 @@
 
 
 .subCard span {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: 38px;
+  justify-content: center;
   text-align: center;
   width: 100px;
 }
 
 .subCard button {
-  width: 100px;
-  text-align: center;
-  height: 38px;
-  border: none;
   background-color: rgb(255, 202, 202);
+  border: none;
+  height: 38px;
+  text-align: center;
+  width: 100px;
 }
 
 .finishContainer {
@@ -110,9 +105,9 @@
 
 .finishContainer div {
   align-items: center;
-  width: 32%;
   display: flex;
   flex-direction: column;
+  width: 32%;
 }
 
 .finishContainer input {
@@ -128,19 +123,19 @@
 }
 
 .finshB {
-  text-align: center;
-  justify-content: space-evenly;
-  width: 100%;
+  bottom: 10px;
   display: flex;
   height: 50px;
-  bottom: 10px;
+  justify-content: space-evenly;
   position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 .finshB button {
-  width: 40%;
-  border: none;
   background-color: #c1dfc5;
+  border: none;
+  width: 40%;
 }
 
 .details {
@@ -149,9 +144,10 @@
 }
 
 .totalPrice {
-  margin-top: 10px;
   font-size: 25px;
+  margin-top: 10px;
 }
+
 @keyframes suaveBlur {
 
   to {

@@ -8,9 +8,8 @@ import CustomerContext from '../context/CustomerContext';
 import * as path from '../utils/paths';
 
 const Bar = () => {
-  const [cart, setCart] = useState(false);
   const [order, setOrnder] = useState(false);
-  const { totalPrice } = useContext(CustomerContext);
+  const { totalPrice, modalCart, setModalCart } = useContext(CustomerContext);
 
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
@@ -20,13 +19,22 @@ const Bar = () => {
     navigate(path.login);
   };
 
-  const toCart = () => setCart(true);
+  const toCart = () => {
+    setModalCart(true);
+    navigate(path.checkout);
+  };
+
+  const toProducts = () => {
+    setModalCart(false);
+    navigate(path.product);
+  };
 
   const toOrder = () => setOrnder(true);
 
   const close = () => {
-    setCart(false);
+    setModalCart(false);
     setOrnder(false);
+    navigate(path.product);
   };
 
   return (
@@ -40,6 +48,7 @@ const Bar = () => {
         <button
           data-testid="customer_products__element-navbar-link-products"
           type="button"
+          onClick={ toProducts }
         >
           Produtos
         </button>
@@ -51,12 +60,18 @@ const Bar = () => {
           Meus pedidos
         </button>
         <button
-          data-testid="customer_products__checkout-bottom-value"
+          data-testid="customer_products__button-cart"
           type="button"
-          className={ `${cart} carrinho` }
+          className={ `${modalCart} carrinho` }
           onClick={ toCart }
+          disabled={ totalPrice === '0.00' }
         >
-          {`Ver Carrinho: R$: ${totalPrice.toString().replace('.', ',')}`}
+          <span>Ver Carrinho: R$:</span>
+          <span data-testid="customer_products__checkout-bottom-value">
+            {
+              totalPrice.toString().replace('.', ',')
+            }
+          </span>
         </button>
       </div>
       <button
@@ -67,10 +82,10 @@ const Bar = () => {
       >
         Sair
       </button>
-      {cart && <Cart />}
+      {modalCart && <Cart />}
       {order && <Order />}
       {
-        (cart || order)
+        (modalCart || order)
           && <button onClick={ close } className="blur" type="button"> </button>
       }
     </div>

@@ -32,8 +32,8 @@ const Cart = () => {
             id={ id }
             name={ name }
             quantity={ quantity }
-            valueU={ price }
-            sub={ sub }
+            valueU={ price.toString().replace('.', ',') }
+            sub={ sub.toString().replace('.', ',') }
           />
         ))}
       </div>
@@ -55,7 +55,7 @@ const Cart = () => {
       <div className="finshB">
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
-          <span>{ totalPrice }</span>
+          <span>{ totalPrice.toString().replace('.', ',') }</span>
         </div>
         <button type="button">Finalizar Pedido</button>
       </div>

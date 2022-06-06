@@ -56,7 +56,7 @@ const Bar = () => {
           className={ `${cart} carrinho` }
           onClick={ toCart }
         >
-          {`Ver Carrinho: R$: ${totalPrice}`}
+          {`Ver Carrinho: R$: ${totalPrice.toString().replace('.', ',')}`}
         </button>
       </div>
       <button

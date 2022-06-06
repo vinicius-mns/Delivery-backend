@@ -17,6 +17,10 @@
   z-index: 100;
 }
 
+.cart h2 {
+  margin: 10px;
+}
+
 .blur {
   animation: suaveBlur;
   animation-duration: 1s;
@@ -38,7 +42,7 @@
 }
 
 .schroll {
-  max-height: 260px;
+  height: 270px;
   overflow-y: scroll;
 }
 

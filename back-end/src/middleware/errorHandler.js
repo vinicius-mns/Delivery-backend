@@ -5,7 +5,7 @@ function errorHandler(
   _next,
 ) {
   console.log('ERRO CAPTURADO NO HANDLER GENERICO', err);
-  return res.status(500).json(err);
+  return res.status(500).json({ message: err.message });
 }
 
 module.exports = { errorHandler };

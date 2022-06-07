@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SubCard from '../component/SubCard';
 import CustomerContext from '../context/CustomerContext';
+import { requestPost, setToken } from '../service/request';
 
 const Cart = () => {
+  const [disabled, setDisable] = useState(true);
+  const [number, setNumber] = useState('');
+  const [address, setAddlress] = useState('');
   const [nothing, setNothing] = useState(true);
   const { totalPrice, cart, setCart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
@@ -30,6 +34,19 @@ const Cart = () => {
   };
 
   const prefix = 'customer_checkout__';
+
+  useEffect(() => {
+    if (items.length > 0) setNothing(false);
+  }, [items.length]);
+
+  const a = ({ target: { value } }) => {
+    setAddlress(value);
+    setDisable(!(number.length > 0 && address.length > 0));
+  };
+  const n = ({ target: { value } }) => {
+    setNumber(value);
+    setDisable(!(number.length > 0 && address.length > 0));
+  };
 
   return (
     <div className="cart">

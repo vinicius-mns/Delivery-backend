@@ -26,10 +26,10 @@ const Cart = () => {
         </div>
       </div>
       <div className="containerSubCard schroll">
-        {items.map(({ id, name, price, quantity, sub }) => (
+        {items.map(({ id, name, price, quantity, sub }, index) => (
           <SubCard
             key={ id }
-            id={ id }
+            id={ index }
             name={ name }
             quantity={ quantity }
             valueU={ price.toString().replace('.', ',') }

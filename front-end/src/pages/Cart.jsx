@@ -7,10 +7,6 @@ const Cart = () => {
   const { totalPrice, cart, setCart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
 
-  useEffect(() => {
-    if (items.length > 0) setNothing(false);
-  }, [items.length]);
-
   const removeItem = (id) => {
     const newCart = cart.filter((x) => x.id !== id);
 
@@ -32,6 +28,8 @@ const Cart = () => {
 
     setCart([]);
   };
+
+  const prefix = 'customer_checkout__';
 
   return (
     <div className="cart">
@@ -64,21 +62,41 @@ const Cart = () => {
       <div className="finishContainer">
         <div>
           <span>P. pessoas responsável</span>
-          <input type="text" />
+          <select
+            data-testid={ `${prefix}select-seller` }
+          >
+            <option value="Tal da Fulana">Tal da Fulana</option>
+          </select>
         </div>
         <div>
           <span>Endereço</span>
-          <input type="text" placeholder="Rua Sao paulo, Bairro Rio" />
+          <input
+            onChange={ a }
+            value={ address }
+            type="text"
+            placeholder="Rua Sao paulo, Bairro Rio"
+            data-testid={ `${prefix}input-address` }
+
+          />
         </div>
         <div>
           <span>Número</span>
-          <input type="number" placeholder="123" />
+          <input
+            onChange={ n }
+            value={ number }
+            type="number"
+            placeholder="123"
+            data-testid={ `${prefix}input-addressNumber` }
+
+          />
         </div>
       </div>
       <div className="finshB">
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
-          <span>{ totalPrice.toString().replace('.', ',') }</span>
+          <span data-testid={ `${prefix}element-order-total-price` }>
+            { totalPrice.toString().replace('.', ',') }
+          </span>
         </div>
         <button
           onClick={ finish }

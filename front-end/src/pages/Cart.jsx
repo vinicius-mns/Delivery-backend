@@ -11,6 +11,15 @@ const Cart = () => {
     if (items.length > 0) setNothing(false);
   }, [items.length]);
 
+  const removeItem = (id) => {
+    const newCart = cart.filter((x) => x.id !== id);
+
+    if (newCart.length === 0) setNothing(true);
+
+    setCart(newCart);
+  };
+
+
   return (
     <div className="cart">
       {nothing && <div className="nothing"><h1>Carrinho Vazio</h1></div>}
@@ -34,6 +43,7 @@ const Cart = () => {
             quantity={ quantity }
             valueU={ price.toString().replace('.', ',') }
             sub={ sub.toString().replace('.', ',') }
+            remove={ () => removeItem(id) }
           />
         ))}
       </div>

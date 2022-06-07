@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const SubCard = ({ id, name, quantity, valueU, sub }) => {
+const SubCard = ({ id, name, quantity, valueU, sub, remove }) => {
   const prefix = 'customer_checkout__element-order-table-';
 
   return (
@@ -12,6 +12,7 @@ const SubCard = ({ id, name, quantity, valueU, sub }) => {
       <span className="d" data-testid={ `${prefix}unit-price-${id}` }>{valueU}</span>
       <span className="e" data-testid={ `${prefix}sub-total-${id}` }>{sub}</span>
       <button
+        onClick={ remove }
         className="f"
         type="button"
         data-testid={ `${prefix}remove-${id}` }
@@ -28,6 +29,7 @@ SubCard.propTypes = {
   quantity: PropTypes.any,
   sub: PropTypes.any,
   valueU: PropTypes.any,
+  remove: PropTypes.any,
 }.isRequired;
 
 export default SubCard;

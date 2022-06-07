@@ -1,7 +1,7 @@
 import '../styles/bar.css';
 import '../styles/cart.css';
-import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Cart from '../pages/Cart';
 import Order from '../pages/Order';
 import CustomerContext from '../context/CustomerContext';
@@ -13,6 +13,13 @@ const Bar = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const url = location.pathname;
+    if (url === '/customer/checkout') setModalCart(true);
+    if (url !== '/customer/checkout') setModalCart(false);
+  });
 
   const logout = () => {
     localStorage.clear('user');
@@ -20,19 +27,16 @@ const Bar = () => {
   };
 
   const toCart = () => {
-    setModalCart(true);
     navigate(path.checkout);
   };
 
   const toProducts = () => {
-    setModalCart(false);
     navigate(path.product);
   };
 
   const toOrder = () => setOrnder(true);
 
   const close = () => {
-    setModalCart(false);
     setOrnder(false);
     navigate(path.product);
   };

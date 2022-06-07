@@ -1,15 +1,52 @@
 import React, { useContext, useEffect, useState } from 'react';
 import SubCard from '../component/SubCard';
 import CustomerContext from '../context/CustomerContext';
+import { requestPost, setToken } from '../service/request';
 
 const Cart = () => {
+  const [disabled, setDisable] = useState(true);
+  const [number, setNumber] = useState('');
+  const [address, setAddlress] = useState('');
   const [nothing, setNothing] = useState(true);
-  const { totalPrice, cart } = useContext(CustomerContext);
+  const { totalPrice, cart, setCart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
+
+  const removeItem = (id) => {
+    const newCart = cart.filter((x) => x.id !== id);
+
+    if (newCart.length === 0) setNothing(true);
+
+    setCart(newCart);
+  };
+
+  const finish = () => {
+    setToken(JSON.parse(localStorage.getItem('user')).token);
+
+    requestPost('/salles', {
+      cart,
+      totalPrice,
+      deliveryAddress: address,
+      deliveryNumber: number,
+      sellerId: 2,
+    });
+
+    setCart([]);
+  };
+
+  const prefix = 'customer_checkout__';
 
   useEffect(() => {
     if (items.length > 0) setNothing(false);
   }, [items.length]);
+
+  const a = ({ target: { value } }) => {
+    setAddlress(value);
+    setDisable(!(number.length > 0 && address.length > 0));
+  };
+  const n = ({ target: { value } }) => {
+    setNumber(value);
+    setDisable(!(number.length > 0 && address.length > 0));
+  };
 
   return (
     <div className="cart">
@@ -26,14 +63,15 @@ const Cart = () => {
         </div>
       </div>
       <div className="containerSubCard schroll">
-        {items.map(({ id, name, price, quantity, sub }) => (
+        {items.map(({ id, name, price, quantity, sub }, index) => (
           <SubCard
             key={ id }
-            id={ id }
+            id={ index }
             name={ name }
             quantity={ quantity }
             valueU={ price.toString().replace('.', ',') }
             sub={ sub.toString().replace('.', ',') }
+            remove={ () => removeItem(id) }
           />
         ))}
       </div>
@@ -41,23 +79,50 @@ const Cart = () => {
       <div className="finishContainer">
         <div>
           <span>P. pessoas responsável</span>
-          <input type="text" />
+          <select
+            data-testid={ `${prefix}select-seller` }
+          >
+            <option value="Tal da Fulana">Tal da Fulana</option>
+          </select>
         </div>
         <div>
           <span>Endereço</span>
-          <input type="text" placeholder="Rua Sao paulo, Bairro Rio" />
+          <input
+            onChange={ a }
+            value={ address }
+            type="text"
+            placeholder="Rua Sao paulo, Bairro Rio"
+            data-testid={ `${prefix}input-address` }
+
+          />
         </div>
         <div>
           <span>Número</span>
-          <input type="number" placeholder="123" />
+          <input
+            onChange={ n }
+            value={ number }
+            type="number"
+            placeholder="123"
+            data-testid={ `${prefix}input-addressNumber` }
+
+          />
         </div>
       </div>
       <div className="finshB">
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
-          <span>{ totalPrice.toString().replace('.', ',') }</span>
+          <span data-testid={ `${prefix}element-order-total-price` }>
+            { totalPrice.toString().replace('.', ',') }
+          </span>
         </div>
-        <button type="button">Finalizar Pedido</button>
+        <button
+          onClick={ finish }
+          disabled={ disabled }
+          type="submit"
+          data-testid={ `${prefix}button-submit-order` }
+        >
+          Finalizar Pedido
+        </button>
       </div>
     </div>
   );

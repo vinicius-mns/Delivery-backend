@@ -10,6 +10,10 @@ export const requestPost = async (endpoint, body) => {
   return data;
 };
 
+export const setToken = (token) => {
+  api.defaults.headers.common.Authorization = token;
+};
+
 export const requestGet = async (endpoint) => {
   const { data } = await api.get(endpoint);
 

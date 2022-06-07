@@ -5,6 +5,7 @@ import CustomerContext from '../context/CustomerContext';
 function CustomerProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [modalCart, setModalCart] = useState(false);
+  const [modalOrder, setModalOrder] = useState(false);
   const [totalPrice, setTotalPrice] = useState('0,00');
 
   const context = {
@@ -14,6 +15,8 @@ function CustomerProvider({ children }) {
     setTotalPrice,
     modalCart,
     setModalCart,
+    modalOrder,
+    setModalOrder,
   };
 
   return (

@@ -4,7 +4,7 @@ import CustomerContext from '../context/CustomerContext';
 
 const Cart = () => {
   const [nothing, setNothing] = useState(true);
-  const { totalPrice, cart } = useContext(CustomerContext);
+  const { totalPrice, cart, setCart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
 
   useEffect(() => {
@@ -19,6 +19,19 @@ const Cart = () => {
     setCart(newCart);
   };
 
+  const finish = () => {
+    setToken(JSON.parse(localStorage.getItem('user')).token);
+
+    requestPost('/salles', {
+      cart,
+      totalPrice,
+      deliveryAddress: address,
+      deliveryNumber: number,
+      sellerId: 2,
+    });
+
+    setCart([]);
+  };
 
   return (
     <div className="cart">
@@ -67,7 +80,14 @@ const Cart = () => {
           <span>{'Total R$: '}</span>
           <span>{ totalPrice.toString().replace('.', ',') }</span>
         </div>
-        <button type="button">Finalizar Pedido</button>
+        <button
+          onClick={ finish }
+          disabled={ disabled }
+          type="submit"
+          data-testid={ `${prefix}button-submit-order` }
+        >
+          Finalizar Pedido
+        </button>
       </div>
     </div>
   );

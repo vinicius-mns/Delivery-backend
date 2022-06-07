@@ -33,7 +33,7 @@ module.exports = {
         type: Sequelize.FLOAT, 
         allowNull: false 
       },
-      delivery_addres: { 
+      delivery_address: { 
         type: Sequelize.STRING, 
         allowNull: false 
       },

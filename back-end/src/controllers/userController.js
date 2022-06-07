@@ -10,7 +10,6 @@ const createUser = async (req, res, next) => {
   
       return res.status(201).json(data);
     } catch (error) {
-      console.log(error);
       return next(error);
     }
   };

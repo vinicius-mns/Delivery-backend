@@ -1,7 +1,6 @@
-const { sign } = require('jsonwebtoken');
 const md5 = require('md5');
-const { readFile } = require('fs/promises');
 const { Users } = require('../database/models');
+const { generateToken } = require('./authService');
 
 const createLogin = async ({ email, password }) => {
   const user = await Users.findOne({ where: { email } });
@@ -10,11 +9,7 @@ const createLogin = async ({ email, password }) => {
 
   if (!(user.password && md5(password))) return false;
 
-  const SECRET = await readFile('jwt.evaluation.key', 'utf-8');
-
-  const token = sign({ data: { role: user.role, name: user.name } }, SECRET, {
-    expiresIn: '15d',
-  });
+  const token = await generateToken(user);
 
   return {
     token,

@@ -13,7 +13,12 @@ const createProducts = (sequelize, DataTypes) => {
     }
   );
 
+  Products.associate = (models) => {
+    models.Products.hasMany(models.SalesProducts, { foreignKey: 'productId', as: 'sales' });
+  };
+
   return Products;
 };
+
 
 module.exports = createProducts;

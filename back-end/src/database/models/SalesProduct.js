@@ -2,9 +2,15 @@ const createSalesProduct = (sequelize, DataTypes) => {
   const SalesProduct = sequelize.define(
     "SalesProducts",
     {
-      saleId: DataTypes.NUMBER,
-      prductId: DataTypes.NUMBER,
       quantity: DataTypes.NUMBER,
+      productId: {
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+      },
+      saleId: {
+        type: DataTypes.NUMBER,
+        primaryKey: true,
+      }
     },
     {
       timestamps: false,
@@ -13,7 +19,25 @@ const createSalesProduct = (sequelize, DataTypes) => {
     }
   );
 
+  SalesProduct.associate = (models) => {
+    SalesProduct.belongsTo(models.Product, { 
+      foreignKey: 'saleId',
+      through: SalesProduct,
+      otherKey: 'productId', 
+    });
+  };
+  
+  SalesProduct.associate = (models) => {
+    SalesProduct.belongsTo(models.Sales, { 
+      foreignKey: 'productId', 
+      through: SalesProduct,
+      otherKey: 'saleId',  
+    });
+  };
+  
   return SalesProduct;
 };
+
+
 
 module.exports = createSalesProduct;

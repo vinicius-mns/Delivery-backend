@@ -4,6 +4,7 @@ const { loginRouter } = require('../routes/loginRoute');
 const { userRouter } = require('../routes/userRoute');
 const { productsRouter } = require('../routes/productsRoute');
 const { errorHandler } = require('../middleware/errorHandler');
+const { salesRouter } = require('../routes/salesRoute');
 const imageRoutes = require('../routes/imageRoutes');
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/login', loginRouter);
 app.use('/register', userRouter);
 app.use('/products', productsRouter);
 app.use('/images/upload', imageRoutes);
+app.use('/sales', salesRouter);
 
 app.use(errorHandler);
 

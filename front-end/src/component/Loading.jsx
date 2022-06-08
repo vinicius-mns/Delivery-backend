@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/loading.css';
 
-export function Loading() {
+function Loading() {
   return (
     <div className="loading">
       <img

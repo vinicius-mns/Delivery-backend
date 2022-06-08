@@ -8,6 +8,7 @@ import Products from '../pages/Products';
 import Register from '../pages/Register';
 import SellerOrders from '../pages/SellerOrders';
 import AdminManager from '../pages/AdminManager';
+import OrderDetails from '../pages/OrderDetails';
 
 const Routers = () => (
   <Routes>
@@ -18,6 +19,7 @@ const Routers = () => (
     <Route path={ path.orderCustomer } element={ <Products /> } />
     <Route path={ path.order } element={ <SellerOrders /> } />
     <Route path={ path.admin } element={ <AdminManager /> } />
+    <Route path={ path.orderDetails } element={ <OrderDetails /> } />
     <Route exact path="/" element={ <Navigate to={ path.login } /> } />
   </Routes>
 );

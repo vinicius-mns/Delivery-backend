@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { requestPost } from '../service/request';
 import logo from '../images/logo.png';
@@ -12,6 +12,12 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalid, setInvalid] = useState(false);
+  // const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('user')) navigate('/customer/products');
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const login = async (event) => {
     event.preventDefault();

@@ -75,6 +75,7 @@ const Cart = () => {
             valueU={ price.toString().replace('.', ',') }
             sub={ sub.toString().replace('.', ',') }
             remove={ () => removeItem(id) }
+            pr="checkout"
           />
         ))}
       </div>

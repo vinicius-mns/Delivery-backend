@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SubCard from '../component/SubCard';
@@ -59,7 +60,7 @@ const OrderDetails = () => {
         <span
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
-          { order.saleDate }
+          { moment(order.saleDate).format('DD/MM/YYYY') }
         </span>
         <span
           data-testid={ `${prefix}element-order-details-label-delivery-status` }
@@ -100,7 +101,7 @@ const OrderDetails = () => {
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
           <span data-testid={ `${prefix}element-order-total-price` }>
-            { order.totalPrice.toFixed(2).replace('.', ',') }
+            { typeof order.totalPrice === 'string' && order.totalPrice.replace('.', ',') }
           </span>
         </div>
       </div>

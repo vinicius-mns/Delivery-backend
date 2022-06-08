@@ -28,6 +28,7 @@
 
 .cardOrder {
   align-items: center;
+  border: none;
   border-radius: 16px;
   display: flex;
   justify-content: space-evenly;

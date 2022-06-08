@@ -1,18 +1,29 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import moment from 'moment';
 
-const CardOrder = ({ order, status }) => (
+const prefix = 'customer_orders__element-';
+const CardOrder = ({ order, status, date, price }) => (
+
   <button type="button" className="cardOrder grey">
     <div>
       <span>Pedido</span>
-      <span>{order}</span>
+      <span data-testid={ `${prefix}order-id-${order}` }>{order}</span>
     </div>
     <div className={ `${status} status` }>
-      <h2>{status}</h2>
+      <h2 data-testid={ `${prefix}delivery-status-${order}` }>{status}</h2>
     </div>
     <div>
-      <span>03/06/22</span>
-      <span>R$: 29,55</span>
+      <span
+        data-testid={ `${prefix}order-date-${order}` }
+      >
+        {moment(date).format('DD/MM/YYYY')}
+      </span>
+      <span
+        data-testid={ `${prefix}card-price-${order}` }
+      >
+        {price.replace('.', ',')}
+      </span>
     </div>
   </button>
 );

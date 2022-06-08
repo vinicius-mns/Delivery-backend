@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SubCard from '../component/SubCard';
 import CustomerContext from '../context/CustomerContext';
 import { requestPost, setToken } from '../service/request';
@@ -9,6 +10,7 @@ const Cart = () => {
   const [address, setAddress] = useState('');
   const [nothing, setNothing] = useState(true);
   const { totalPrice, cart, setCart } = useContext(CustomerContext);
+  const navigation = useNavigate();
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
 
   const removeItem = (id) => {
@@ -28,8 +30,9 @@ const Cart = () => {
       deliveryAddress: address,
       deliveryNumber: number,
       sellerId: 2,
+    }).then((id) => {
+      navigation(`/customer/order/${id}`);
     });
-
     setCart([]);
   };
 

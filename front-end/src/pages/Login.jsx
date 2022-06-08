@@ -47,6 +47,7 @@ const Login = () => {
           testId="common_login__input-password"
           type="password"
           handleChange={ handlePass }
+          keydown={ (e) => e.key === 'Enter' && login(e) }
         />
         { invalid && <span className="err" data-testid={ err }>{ msg }</span> }
 

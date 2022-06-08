@@ -31,7 +31,7 @@ const Cart = () => {
       deliveryNumber: number,
       sellerId: 2,
     }).then((id) => {
-      navigation(`/customer/order/${id}`);
+      navigation(`/customer/orders/${id}`);
     });
     setCart([]);
   };

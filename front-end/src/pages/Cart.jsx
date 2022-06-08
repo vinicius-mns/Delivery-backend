@@ -78,11 +78,13 @@ const Cart = () => {
       <span className="details">Detalhes da Entrega</span>
       <div className="finishContainer">
         <div>
-          <span>P. pessoas responsável</span>
+          <span>Pessoas responsável</span>
           <select
             data-testid={ `${prefix}select-seller` }
           >
             <option value="Tal da Fulana">Tal da Fulana</option>
+            <option value="Tal da Fulana">Esse daqui</option>
+            <option value="Tal da Fulana">Outra pessoa</option>
           </select>
         </div>
         <div>
@@ -93,7 +95,6 @@ const Cart = () => {
             type="text"
             placeholder="Rua Sao paulo, Bairro Rio"
             data-testid={ `${prefix}input-address` }
-
           />
         </div>
         <div>
@@ -104,7 +105,6 @@ const Cart = () => {
             type="number"
             placeholder="123"
             data-testid={ `${prefix}input-addressNumber` }
-
           />
         </div>
       </div>
@@ -121,7 +121,7 @@ const Cart = () => {
           type="submit"
           data-testid={ `${prefix}button-submit-order` }
         >
-          Finalizar Pedido
+          <h2>Finalizar Pedido</h2>
         </button>
       </div>
     </div>

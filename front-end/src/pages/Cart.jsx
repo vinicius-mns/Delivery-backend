@@ -6,7 +6,7 @@ import { requestPost, setToken } from '../service/request';
 const Cart = () => {
   const [disabled, setDisable] = useState(true);
   const [number, setNumber] = useState('');
-  const [address, setAddlress] = useState('');
+  const [address, setAddress] = useState('');
   const [nothing, setNothing] = useState(true);
   const { totalPrice, cart, setCart } = useContext(CustomerContext);
   const items = cart.map((x) => ({ ...x, sub: (x.price * x.quantity).toFixed(2) }));
@@ -22,7 +22,7 @@ const Cart = () => {
   const finish = () => {
     setToken(JSON.parse(localStorage.getItem('user')).token);
 
-    requestPost('/salles', {
+    requestPost('/sales', {
       cart,
       totalPrice,
       deliveryAddress: address,
@@ -40,7 +40,7 @@ const Cart = () => {
   }, [items.length]);
 
   const a = ({ target: { value } }) => {
-    setAddlress(value);
+    setAddress(value);
     setDisable(!(number.length > 0 && address.length > 0));
   };
   const n = ({ target: { value } }) => {

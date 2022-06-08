@@ -14,7 +14,16 @@ const createUser = (sequelize, DataTypes) => {
     }
   );
 
+  User.associate= (models) => {
+    User.hasMany(models.Sales, { foreignKey: 'userId', as: 'orders' });
+  }
+  
+  User.associate = (models) => {
+    User.hasMany(models.Sales, { foreignKey: 'sellerId', as: 'orders' });
+  }
+
   return User
 };
+
 
 module.exports = createUser;

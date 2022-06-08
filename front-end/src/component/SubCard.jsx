@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const SubCard = ({ id, name, quantity, valueU, sub, remove }) => {
-  const prefix = 'customer_checkout__element-order-table-';
+const SubCard = ({ id, name, quantity, valueU, sub, remove, pr }) => {
+  const prefix = `customer_${pr}__element-order-table-`;
 
   return (
     <div className="subCard grey">
@@ -11,14 +11,19 @@ const SubCard = ({ id, name, quantity, valueU, sub, remove }) => {
       <span className="c" data-testid={ `${prefix}quantity-${id}` }>{quantity}</span>
       <span className="d" data-testid={ `${prefix}unit-price-${id}` }>{valueU}</span>
       <span className="e" data-testid={ `${prefix}sub-total-${id}` }>{sub}</span>
-      <button
-        onClick={ remove }
-        className="f"
-        type="button"
-        data-testid={ `${prefix}remove-${id}` }
-      >
-        Remover
-      </button>
+      {
+        remove
+          && (
+            <button
+              onClick={ remove }
+              className="f"
+              type="button"
+              data-testid={ `${prefix}remove-${id}` }
+            >
+              Remover
+            </button>
+          )
+      }
     </div>
   );
 };

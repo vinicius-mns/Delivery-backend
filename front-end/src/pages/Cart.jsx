@@ -31,7 +31,7 @@ const Cart = () => {
       deliveryNumber: number,
       sellerId: 2,
     }).then((id) => {
-      navigation(`/customer/order/${id}`);
+      navigation(`/customer/orders/${id}`);
     });
     setCart([]);
   };
@@ -75,6 +75,7 @@ const Cart = () => {
             valueU={ price.toString().replace('.', ',') }
             sub={ sub.toString().replace('.', ',') }
             remove={ () => removeItem(id) }
+            pr="checkout"
           />
         ))}
       </div>

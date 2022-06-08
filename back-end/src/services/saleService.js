@@ -2,7 +2,7 @@ const { Sales, SalesProducts } = require('../database/models');
 
 const createSale = async (dataSale) => {
     const { cart, totalPrice, deliveryAddress, deliveryNumber, sellerId, userId } = dataSale;
-    const status = 'pending';
+    const status = 'Pendente';
     const saleDate = new Date();
     const sale = await Sales
       .create({ userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status, saleDate });

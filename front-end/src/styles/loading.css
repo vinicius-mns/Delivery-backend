@@ -1,12 +1,12 @@
 .loading {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99;
-    background-color: rgb(252, 254, 252);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  align-items: center;
+  background-color: rgb(252, 254, 252);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 99;
 }

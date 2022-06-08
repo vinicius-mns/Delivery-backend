@@ -15,6 +15,7 @@ const Routers = () => (
     <Route path={ path.register } element={ <Register /> } />
     <Route path={ path.product } element={ <Products /> } />
     <Route path={ path.checkout } element={ <Products /> } />
+    <Route path={ path.orderCustomer } element={ <Products /> } />
     <Route path={ path.order } element={ <SellerOrders /> } />
     <Route path={ path.admin } element={ <AdminManager /> } />
     <Route exact path="/" element={ <Navigate to={ path.login } /> } />

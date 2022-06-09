@@ -1,6 +1,6 @@
 import '../styles/bar.css';
 import '../styles/cart.css';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Cart from '../pages/Cart';
 import Order from '../pages/Order';
@@ -18,7 +18,6 @@ const Bar = () => {
     modalOrder,
     setModalOrder,
   } = useContext(CustomerContext);
-  const [disabled, setDisabled] = useState(true);
 
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
@@ -40,7 +39,7 @@ const Bar = () => {
     };
 
     getOrders();
-  }, []);
+  }, [setOrders]);
 
   useEffect(() => {
     console.log(orders.length);
@@ -79,7 +78,6 @@ const Bar = () => {
           data-testid="customer_products__element-navbar-link-orders"
           type="button"
           onClick={ toOrder }
-          disabled={ disabled }
         >
           Meus pedidos
         </button>

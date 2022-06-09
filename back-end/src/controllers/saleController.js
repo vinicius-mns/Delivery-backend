@@ -42,5 +42,18 @@ const getByUser = async (req, res, next) => {
     return next(error);
   }
 };
+
+const editStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    const sale = await saleService.getBySaleId(id);
+    if (!sale) return res.status(400).json({ message: 'sale não encontrada' });
+    await saleService.editStatus(status, id);
+    return res.status(204).json({ message: 'Foi modificado' });
+  } catch (error) {
+    return next(error);
+  }
+};
   
-module.exports = { getByUser, createSale, getBySaleId };
+module.exports = { getByUser, createSale, getBySaleId, editStatus };

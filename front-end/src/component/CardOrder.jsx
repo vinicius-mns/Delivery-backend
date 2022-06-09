@@ -3,14 +3,15 @@ import React from 'react';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 
-const prefix = 'customer_orders__element-';
-const CardOrder = ({ order, status, date, price }) => {
+const CardOrder = ({ order, status, date, price, roles }) => {
   const navigate = useNavigate();
+  const prefix = `${roles}_orders__element-`;
   return (
     <button
       type="button"
       className="cardOrder grey"
-      onClick={ () => navigate(`/customer/orders/${order}`) }
+      onClick={ () => navigate(roles ? `/seller/orders/${order}`
+        : `/customer/orders/${order}`) }
     >
       <div>
         <span>Pedido</span>

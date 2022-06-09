@@ -1,6 +1,7 @@
 import '../styles/bar.css';
 import '../styles/cart.css';
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Cart from '../pages/Cart';
 import Order from '../pages/Order';
@@ -8,7 +9,7 @@ import CustomerContext from '../context/CustomerContext';
 import * as path from '../utils/paths';
 import { requestGet, setToken } from '../service/request';
 
-const Bar = () => {
+const Bar = ({ roles }) => {
   const {
     setOrders,
     totalPrice,
@@ -48,7 +49,8 @@ const Bar = () => {
 
   const toCart = () => navigate(path.checkout);
   const toProducts = () => navigate(path.product);
-  const toOrder = () => navigate(path.orderCustomer);
+  const toOrder = () => (roles ? navigate(path.sellerDetails)
+    : navigate(path.orderCustomer));
   const close = () => navigate(path.product);
 
   return (
@@ -104,5 +106,9 @@ const Bar = () => {
     </div>
   );
 };
+
+Bar.propTypes = {
+  roles: PropTypes.bool,
+}.isRequired;
 
 export default Bar;

@@ -5,14 +5,14 @@ import SubCard from '../component/SubCard';
 import { requestGet, setToken } from '../service/request';
 import Bar from '../component/Bar';
 
-const OrderDetails = () => {
+const SellerOrderDetails = () => {
   const [order, setOrder] = useState({});
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   // const [disabled, setDisabled] = useState(true);
 
   const { id } = useParams();
-  const prefix = 'customer_order_details__';
+  const prefix = 'seller_order_details__';
 
   useEffect(() => {
     const getProducts = async () => {
@@ -57,17 +57,12 @@ const OrderDetails = () => {
 
   return (
     <div>
-      <Bar />
+      <Bar roles />
       <div>
         <span
           data-testid={ `${prefix}element-order-details-label-order-id` }
         >
           {`Pedido 000${order && order.id}`}
-        </span>
-        <span
-          data-testid={ `${prefix}element-order-details-label-seller-name` }
-        >
-          P. Vend: Fulana Pereira
         </span>
         <span
           data-testid={ `${prefix}element-order-details-label-order-date` }
@@ -81,10 +76,16 @@ const OrderDetails = () => {
         </span>
         <button
           type="button"
-          disabled
-          data-testid={ `${prefix}button-delivery-check` }
+          data-testid={ `${prefix}button-preparing-check` }
         >
-          MARCAR COMO ENTREGUE
+          PREPARAR PEDIDO
+        </button>
+        <button
+          type="button"
+          disabled
+          data-testid={ `${prefix}button-dispatch-check` }
+        >
+          SAIU PARA ENTREGA
         </button>
       </div>
       <div>
@@ -123,4 +124,4 @@ const OrderDetails = () => {
   );
 };
 
-export default OrderDetails;
+export default SellerOrderDetails;

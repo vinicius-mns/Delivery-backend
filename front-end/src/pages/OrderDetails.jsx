@@ -2,7 +2,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SubCard from '../component/SubCard';
-import { requestGet, setToken } from '../service/request';
+import { requestGet, requestPut, setToken } from '../service/request';
 import Bar from '../component/Bar';
 
 const OrderDetails = () => {
@@ -46,15 +46,13 @@ const OrderDetails = () => {
     if (order) filterProducts();
   }, [order, productList]);
 
-  // useEffect(() => {
-  //   console.log(order);
-  //   if (order) {
-  //     return setDisabled(false);
-  //   }
-
-  //   return setDisabled(true);
-  // }, [order]);
-
+  const editStatus = async (status) => {
+    setToken(JSON.parse(localStorage.getItem('user')).token);
+    const endpoint = `/sales/${id}`;
+    await requestPut(endpoint, {
+      status,
+    });
+  };
   return (
     <div>
       <Bar />
@@ -80,8 +78,9 @@ const OrderDetails = () => {
           { order && order.status }
         </span>
         <button
+          onClick={ () => editStatus('Entregue') }
           type="button"
-          disabled
+          disabled={ order.status !== 'Em Trânsito' }
           data-testid={ `${prefix}button-delivery-check` }
         >
           MARCAR COMO ENTREGUE

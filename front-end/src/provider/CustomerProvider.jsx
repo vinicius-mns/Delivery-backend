@@ -7,6 +7,7 @@ function CustomerProvider({ children }) {
   const [modalCart, setModalCart] = useState(false);
   const [modalOrder, setModalOrder] = useState(false);
   const [totalPrice, setTotalPrice] = useState('0,00');
+  const [orders, setOrders] = useState([]);
 
   const context = {
     cart,
@@ -17,6 +18,8 @@ function CustomerProvider({ children }) {
     setModalCart,
     modalOrder,
     setModalOrder,
+    orders,
+    setOrders,
   };
 
   return (

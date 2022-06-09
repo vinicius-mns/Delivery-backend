@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import CardOrder from '../component/CardOrder';
+import CustomerContext from '../context/CustomerContext';
 import { requestGet, setToken } from '../service/request';
 import '../styles/order.css';
 
@@ -12,7 +13,7 @@ import '../styles/order.css';
 // };
 
 const Order = () => {
-  const [orders, setOrders] = useState([]);
+  const { orders, setOrders } = useContext(CustomerContext);
 
   useEffect(() => {
     setToken(JSON.parse(localStorage.getItem('user')).token);
@@ -28,7 +29,6 @@ const Order = () => {
     <div className="order">
       <h2>Meus pedidos</h2>
       <div className="orderContainer">
-        { console.log(orders) }
         {
           orders?.map(({ id, status, saleDate, totalPrice }, i) => (
             <CardOrder

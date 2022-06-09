@@ -112,7 +112,8 @@ const OrderDetails = () => {
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
           <span data-testid={ `${prefix}element-order-total-price` }>
-            { order && typeof order.totalPrice === 'string' && order.totalPrice.replace('.', ',') }
+            { order && typeof order.totalPrice === 'string' 
+              && order.totalPrice.replace('.', ',') }
           </span>
         </div>
       </div>

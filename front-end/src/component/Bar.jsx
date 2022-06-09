@@ -10,7 +10,6 @@ import { requestGet, setToken } from '../service/request';
 
 const Bar = () => {
   const {
-    orders,
     setOrders,
     totalPrice,
     modalCart,
@@ -40,13 +39,6 @@ const Bar = () => {
 
     getOrders();
   }, [setOrders]);
-
-  useEffect(() => {
-    console.log(orders.length);
-    if (orders.length !== 0) {
-      return setDisabled(false);
-    }
-  }, [orders]);
 
   const logout = () => {
     localStorage.clear('user');

@@ -8,7 +8,7 @@ const OrderDetails = () => {
   const [order, setOrder] = useState({});
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
 
   const { id } = useParams();
   const prefix = 'customer_order_details__';
@@ -45,14 +45,14 @@ const OrderDetails = () => {
     if (order) filterProducts();
   }, [order, productList]);
 
-  useEffect(() => {
-    console.log(order);
-    if (order) {
-      return setDisabled(false);
-    }
+  // useEffect(() => {
+  //   console.log(order);
+  //   if (order) {
+  //     return setDisabled(false);
+  //   }
 
-    return setDisabled(true);
-  }, [order]);
+  //   return setDisabled(true);
+  // }, [order]);
 
   return (
     <div>
@@ -79,7 +79,7 @@ const OrderDetails = () => {
         </span>
         <button
           type="button"
-          disabled={ true }
+          disabled
           data-testid={ `${prefix}button-delivery-check` }
         >
           MARCAR COMO ENTREGUE

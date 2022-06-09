@@ -23,23 +23,22 @@ const Order = () => {
     };
 
     getOrders();
-  }, []);
+  }, [setOrders]);
 
   return (
     <div className="order">
       <h2>Meus pedidos</h2>
       <div className="orderContainer">
-        {
-          orders?.map(({ id, status, saleDate, totalPrice }, i) => (
-            <CardOrder
-              order={ id }
-              status={ status }
-              key={ i }
-              date={ saleDate }
-              price={ totalPrice }
-            />
-          ))
-        }
+        {orders?.map(({ id, status, saleDate, totalPrice }, i) => (
+          <CardOrder
+            order={ id }
+            status={ status }
+            key={ i }
+            date={ saleDate }
+            price={ totalPrice }
+            roles="customer"
+          />
+        ))}
       </div>
     </div>
   );

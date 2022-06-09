@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SubCard from '../component/SubCard';
 import { requestGet, setToken } from '../service/request';
+import Bar from '../component/Bar';
 
 const OrderDetails = () => {
   const [order, setOrder] = useState({});
@@ -56,6 +57,7 @@ const OrderDetails = () => {
 
   return (
     <div>
+      <Bar />
       <div>
         <span
           data-testid={ `${prefix}element-order-details-label-order-id` }

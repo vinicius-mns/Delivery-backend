@@ -79,7 +79,7 @@ const OrderDetails = () => {
         </span>
         <button
           type="button"
-          disabled={ disabled }
+          disabled={ true }
           data-testid={ `${prefix}button-delivery-check` }
         >
           MARCAR COMO ENTREGUE

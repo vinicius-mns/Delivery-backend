@@ -6,3 +6,4 @@ export const order = '/seller/orders';
 export const admin = '/admin/manage';
 export const orderCustomer = '/customer/orders';
 export const orderDetails = '/customer/orders/:id';
+export const sellerDetails = '/seller/orders/:id';

@@ -8,15 +8,19 @@ const createSale = async (dataSale) => {
       .create({ userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status, saleDate });
     cart.forEach((element) => {
       const { id, quantity } = element;
-      SalesProducts.create({ productId: id, quantity, saleId: sale.dataValues.id });
+    SalesProducts.create({
+      productId: id,
+      quantity,
+      saleId: sale.dataValues.id,
     });
-    return sale.dataValues.id;
+  });
+  return sale.dataValues.id;
 };
 
 const getBySaleId = async (id) => {
   const sale = await Sales.findOne({
     where: { id },
-    include: { model: SalesProducts }, 
+    include: { model: SalesProducts },
   });
   return sale;
 };
@@ -24,7 +28,7 @@ const getBySaleId = async (id) => {
 const getByUserId = async (userId) => {
   const sales = await Sales.findAll({
     where: { userId },
-    include: { model: SalesProducts }, 
+    include: { model: SalesProducts },
   });
   return sales;
 };
@@ -32,9 +36,28 @@ const getByUserId = async (userId) => {
 const getBySellerId = async (sellerId) => {
   const sales = await Sales.findAll({
     where: { sellerId },
-    include: { model: SalesProducts }, 
+    include: { model: SalesProducts },
   });
   return sales;
 };
 
-module.exports = { getBySellerId, getByUserId, createSale, getBySaleId };
+const editStatus = async (status, id) => {
+  // const statusList = ['Pendente', 'Preparando','Entregue','Em Trânsito' ]
+  // if ( statusList.includes(status))
+  await Sales.update(
+    {
+      status,
+    },
+    {
+      where: { id },
+    },
+  );
+};
+
+module.exports = {
+  getBySellerId,
+  getByUserId,
+  createSale,
+  getBySaleId,
+  editStatus,
+};

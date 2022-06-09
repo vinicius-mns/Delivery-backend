@@ -10,8 +10,9 @@ const CardOrder = ({ order, status, date, price, roles }) => {
     <button
       type="button"
       className="cardOrder grey"
-      onClick={ () => navigate(roles ? `/seller/orders/${order}`
-        : `/customer/orders/${order}`) }
+      onClick={ () => (roles === 'seller'
+        ? navigate(`/seller/orders/${order}`)
+        : navigate(`/customer/orders/${order}`)) }
     >
       <div>
         <span>Pedido</span>

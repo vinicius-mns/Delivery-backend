@@ -8,6 +8,7 @@ const OrderDetails = () => {
   const [order, setOrder] = useState({});
   const [productList, setProductList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [disabled, setDisabled] = useState(true);
 
   const { id } = useParams();
   const prefix = 'customer_order_details__';
@@ -44,13 +45,22 @@ const OrderDetails = () => {
     if (order) filterProducts();
   }, [order, productList]);
 
+  useEffect(() => {
+    console.log(order);
+    if (order) {
+      return setDisabled(false);
+    }
+
+    return setDisabled(true);
+  }, [order]);
+
   return (
     <div>
       <div>
         <span
           data-testid={ `${prefix}element-order-details-label-order-id` }
         >
-          {`Pedido 000${order.id}`}
+          {`Pedido 000${order && order.id}`}
         </span>
         <span
           data-testid={ `${prefix}element-order-details-label-seller-name` }
@@ -60,15 +70,16 @@ const OrderDetails = () => {
         <span
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
-          { moment(order.saleDate).format('DD/MM/YYYY') }
+          { moment(order && order.saleDate).format('DD/MM/YYYY') }
         </span>
         <span
           data-testid={ `${prefix}element-order-details-label-delivery-status` }
         >
-          { order.status }
+          { order && order.status }
         </span>
         <button
           type="button"
+          disabled={ disabled }
           data-testid={ `${prefix}button-delivery-check` }
         >
           MARCAR COMO ENTREGUE
@@ -101,7 +112,7 @@ const OrderDetails = () => {
         <div className="totalPrice">
           <span>{'Total R$: '}</span>
           <span data-testid={ `${prefix}element-order-total-price` }>
-            { typeof order.totalPrice === 'string' && order.totalPrice.replace('.', ',') }
+            { order && typeof order.totalPrice === 'string' && order.totalPrice.replace('.', ',') }
           </span>
         </div>
       </div>
